@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.am.android.sadraedu.Model.Fish;
@@ -107,8 +106,9 @@ public class FishAdapter extends RecyclerView.Adapter<FishAdapter.FishViewHolder
                             @Override
                             public void onSuccess(SuccessResponse response) {
                                 super.onSuccess(response);
-                                Toast.makeText(context, "فایل با موفقیت در پوشه Pdf Fishes ذخیره شد . ", Toast.LENGTH_SHORT).show();
 
+
+                                Toast.makeText(context, "فایل با موفقیت در حافظه ذخیره شد !", Toast.LENGTH_SHORT).show();
                                 holder.imageView_print.setVisibility(View.VISIBLE);
                                 holder.imageView_delete.setVisibility(View.VISIBLE);
                             }

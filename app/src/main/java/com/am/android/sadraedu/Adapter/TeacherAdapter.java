@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -65,12 +68,14 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherV
     public class TeacherViewHolder extends RecyclerView.ViewHolder {
         public TextView textView_name, textView_education_degree, textView_education_major;
         public CardView cardView;
+
         public TeacherViewHolder(@NonNull View view) {
             super(view);
             textView_name = view.findViewById(R.id.teacher_name_text);
             textView_education_degree = view.findViewById(R.id.teacher_degree_text);
             textView_education_major = view.findViewById(R.id.teacher_father_name);
             cardView = view.findViewById(R.id.teacher_card);
+
 
         }
     }

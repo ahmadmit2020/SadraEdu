@@ -11,11 +11,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.am.android.sadraedu.Adapter.FishAdapter;
+import com.am.android.sadraedu.Adapter.OnDeleteFish;
 import com.am.android.sadraedu.Model.CreateFishResponse;
 import com.am.android.sadraedu.Model.Fish;
 import com.am.android.sadraedu.Model.Teacher;
@@ -33,12 +36,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TeacherActivity extends AppCompatActivity implements Callback<List<Fish>> {
+public class TeacherActivity extends AppCompatActivity implements Callback<List<Fish>>, OnDeleteFish {
 
     ActivityTeacherBinding binding;
     Teacher teacher;
     LayoutAnimationController layout_animation;
     ApiInterface anInterface;
+    Call<List<Fish>> get_call;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,15 +65,15 @@ public class TeacherActivity extends AppCompatActivity implements Callback<List<
 
         anInterface = Api.api().create(ApiInterface.class);
 
-        Call<List<Fish>> call = anInterface.getTeacherFishes(teacher.getId());
+        get_call = anInterface.getTeacherFishes(teacher.getId());
 
         binding.progressBar.setVisibility(View.VISIBLE);
-        call.enqueue(TeacherActivity.this);
+        get_call.enqueue(TeacherActivity.this);
 
         binding.addFishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ShowAddFishBottomSheet(call);
+                ShowAddFishBottomSheet(get_call);
             }
         });
 
@@ -152,13 +156,55 @@ public class TeacherActivity extends AppCompatActivity implements Callback<List<
 
     }
 
+    private void ConfirmDeleteAlertDialog(int fish_id) {
+        View view = LayoutInflater.from(this).inflate(R.layout.alert_dialog_confirm_delete, null, false);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.CustomDialog);
+        builder.setView(view);
+        AlertDialog alertDialog = builder.create();
+        TextView textView_cancel = view.findViewById(R.id.login_fragment_login_button);
+        TextView textView_delete = view.findViewById(R.id.login_fragment_cancel_button);
+        textView_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.cancel();
+
+            }
+        });
+        textView_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Call<String> delete_call = anInterface.deleteFish(fish_id);
+                delete_call.enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        MySnackBar.MySnackBarMargin(binding.getRoot(), TeacherActivity.this, 1, "فیش مورد نظر با موفقیت حذف شد .");
+                        binding.progressBar.setVisibility(View.VISIBLE);
+                        get_call.clone().enqueue(TeacherActivity.this);
+
+                        alertDialog.cancel();
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        MySnackBar.MySnackBarMargin(binding.getRoot(), TeacherActivity.this, 2, "مشکلی در ارتباط با سرور رخ داده است .");
+                        alertDialog.cancel();
+
+                    }
+                });
+            }
+        });
+        alertDialog.show();
+    }
+
+
+
     @Override
     public void onResponse(Call<List<Fish>> call, Response<List<Fish>> response) {
         binding.progressBar.setVisibility(View.GONE);
         if (response.code() == 200) {
             binding.recyclerView.setLayoutAnimation(layout_animation);
 
-            binding.recyclerView.setAdapter(new FishAdapter(response.body(), TeacherActivity.this));
+            binding.recyclerView.setAdapter(new FishAdapter(response.body(), TeacherActivity.this, TeacherActivity.this));
         } else {
             ShowErrorSnackBar(call);
         }
@@ -202,5 +248,10 @@ public class TeacherActivity extends AppCompatActivity implements Callback<List<
         binding.progressBar.setVisibility(View.GONE);
         ShowErrorSnackBar(call);
 
+    }
+
+    @Override
+    public void OnFishDeleteClicked(int fish_id) {
+        ConfirmDeleteAlertDialog(fish_id);
     }
 }

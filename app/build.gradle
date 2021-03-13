@@ -55,4 +55,6 @@ dependencies {
     implementation 'com.amitshekhar.android:android-networking:1.0.2'
     implementation 'com.karumi:dexter:6.2.2'
 
+    implementation 'com.github.Gkemon:XML-to-PDF-generator:2.3'
+
 }

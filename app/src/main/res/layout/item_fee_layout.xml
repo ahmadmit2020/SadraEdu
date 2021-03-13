@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/teacher_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="5dp"
-        android:layout_marginRight="8dp"
-        android:id="@+id/teacher_card"
-        android:clickable="true"
-        android:foreground="?attr/selectableItemBackground"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="4dp"
+        android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -36,11 +36,31 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageView
+                android:id="@+id/delete_fish_image"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="8dp"
+                android:padding="4dp"
+                android:src="@drawable/ic_delete"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="8dp"
+                android:id="@+id/print_fish_image"
+                android:padding="3dp"
+                android:src="@drawable/ic_printer_fill"
+                app:layout_constraintStart_toEndOf="@id/delete_fish_image"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/teacher_degree_text"
-                android:layout_marginTop="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
 
                 android:textColor="?attr/grayColor"
@@ -61,15 +81,15 @@
                 app:layout_constraintEnd_toStartOf="@+id/imageView2"
                 app:layout_constraintTop_toBottomOf="@+id/teacher_degree_text"
                 app:layout_constraintVertical_bias="0.333"
-                tools:text="مبلغ هر کلاس : 100000" />
+                tools:text="مبلغ هر جلسه : 100000" />
 
             <TextView
+                android:id="@+id/fish_whole_salary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginBottom="8dp"
                 android:textColor="?attr/colorOnSecondary"
-                android:id="@+id/fish_whole_salary"
                 android:textSize="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -87,13 +107,13 @@
                 app:layout_constraintBottom_toBottomOf="@+id/teacher_degree_text"
                 app:layout_constraintEnd_toStartOf="@+id/teacher_degree_text"
                 app:layout_constraintTop_toTopOf="@+id/teacher_degree_text"
-                tools:text=" درصد مالیات : 2%" />
+                tools:text=" درصد کسری : 2%" />
 
             <TextView
                 android:id="@+id/teacher_name_text"
-                android:layout_marginTop="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:textColor="?attr/colorOnSecondary"
                 android:textSize="16dp"
@@ -103,10 +123,10 @@
                 tools:text="سال : 1389" />
 
             <TextView
+                android:id="@+id/fish_month_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:id="@+id/fish_month_text"
                 android:textColor="?attr/colorOnSecondary"
 
                 android:textSize="16dp"

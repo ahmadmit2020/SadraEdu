@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_corner_rounded_bottom_sheet"
+    android:layoutDirection="ltr"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/checkedTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="اضافه کردن فیش"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/line_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="?attr/grayColor"
+        app:layout_constraintTop_toBottomOf="@id/checkedTextView" />
+
+    <ScrollView
+        android:id="@+id/bottom_scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/line_view"
+
+        >
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="16dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layoutDirection="rtl"
+                android:weightSum="2">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/building_name_input_layout"
+                    style="@style/TextInputLayout.OutlineBox.CustomFont"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_weight="1"
+                    android:padding="0dp"
+                    android:hint="سال"
+                    android:layoutDirection="ltr"
+                    app:hintTextAppearance="@style/HintFont"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/fish_year_edit_text"
+                        android:layout_width="match_parent"
+
+                        android:maxLength="4"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/iransans_en_num"
+                        android:gravity="center_vertical"
+                        android:inputType="number"
+                        android:padding="10dp"
+
+                        android:textSize="14dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextInputLayout.OutlineBox.CustomFont"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_weight="1"
+                    android:hint="ماه"
+                    android:layoutDirection="ltr"
+                    app:hintTextAppearance="@style/HintFont"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:id="@+id/fish_month_edit_text"
+                        android:maxLength="2"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/iransans_en_num"
+                        android:gravity="center_vertical"
+                        android:inputType="number"
+                        android:padding="10dp"
+
+                        android:textSize="14dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layoutDirection="rtl"
+                android:weightSum="2">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextInputLayout.OutlineBox.CustomFont"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_weight="1"
+                    android:hint="تعداد روزها"
+                    android:layoutDirection="ltr"
+                    app:hintTextAppearance="@style/HintFont"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/iransans_en_num"
+                        android:gravity="center_vertical"
+                        android:id="@+id/fish_days_edit_text"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        android:padding="10dp"
+
+                        android:textSize="14dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextInputLayout.OutlineBox.CustomFont"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_weight="1"
+                    android:hint="درصد مالیات"
+                    android:layoutDirection="ltr"
+                    app:hintTextAppearance="@style/HintFont"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:id="@+id/fish_maliat_edit_text"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/iransans_en_num"
+                        android:gravity="center_vertical"
+                        android:inputType="number"
+                        android:padding="10dp"
+                        android:maxLength="3"
+
+                        android:textSize="14dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layoutDirection="rtl"
+                android:weightSum="2">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextInputLayout.OutlineBox.CustomFont"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_weight="2"
+                    android:hint="مبلغ هر جلسه"
+                    android:layoutDirection="ltr"
+                    app:hintTextAppearance="@style/HintFont"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/fish_per_day_edit_text"
+                        android:fontFamily="@font/iransans_en_num"
+                        android:gravity="center_vertical"
+                        android:inputType="number"
+                        android:padding="10dp"
+
+                        android:textSize="14dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/add_building_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:padding="10dp">
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/add_fish_button_bs"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="ذخیره"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        app:cornerRadius="7dp"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/bottom_scrollView" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:indeterminateTint="?attr/colorOnSecondary"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/add_fish_button_bs"
+        app:layout_constraintStart_toEndOf="@+id/add_fish_button_bs"
+        app:layout_constraintTop_toTopOf="@+id/add_fish_button_bs" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,8 @@ package com.am.android.sadraedu.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,6 +12,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.am.android.sadraedu.Adapter.TeacherAdapter;
 import com.am.android.sadraedu.Model.Teacher;
+import com.am.android.sadraedu.R;
 import com.am.android.sadraedu.Retrofit.Api;
 import com.am.android.sadraedu.Retrofit.ApiInterface;
 import com.am.android.sadraedu.Tools.MySnackBar;
@@ -25,6 +28,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity implements Callback<List<Teacher>> {
 
     ActivityMainBinding binding;
+    LayoutAnimationController layout_animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Tea
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        layout_animation = AnimationUtils.loadLayoutAnimation(this, R.anim.layout_animation);
 
         ApiInterface anInterface = Api.api().create(ApiInterface.class);
 
@@ -63,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Tea
                     teachers.add(response.body().get(i));
                 }
             }
+            binding.recyclerView.setLayoutAnimation(layout_animation);
+
             binding.recyclerView.setAdapter(new TeacherAdapter(teachers, MainActivity.this));
         } else {
             MySnackBar.MySnackBarMarginButton(binding.getRoot(), MainActivity.this, 2, "مشکلی در ارتباط با سرور رخ داده است", "تلاش دوباره", new View.OnClickListener() {

@@ -149,6 +149,7 @@
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/add_fish_button"
         android:layout_margin="8dp"
         android:drawableRight="@drawable/ic_baseline_add_24"
         android:text="اضافه کردن"

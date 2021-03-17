@@ -63,7 +63,7 @@ public class TeacherActivity extends AppCompatActivity implements Callback<List<
         binding.teacherNationalCode.setText("کد ملی  : " + teacher.getNational_code());
         binding.teacherMobileNumber.setText("شماره موبایل  : " + teacher.getSpouse_no());
 
-        anInterface = Api.api().create(ApiInterface.class);
+            anInterface = Api.api().create(ApiInterface.class);
 
         get_call = anInterface.getTeacherFishes(teacher.getId());
 
